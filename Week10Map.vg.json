@@ -1,0 +1,65 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Monthly Public Transport Patronage by Mode",
+    "title": "Monthly Public Transport Patronage by Mode",
+    "width": 1000,  
+    "height": 500, 
+    "data": {
+      "url": "https://raw.githubusercontent.com/chrischenwastaken/FIT3179/refs/heads/main/Monthly%20public%20transport%20patronage%20by%20mode_21082024%20-%20Monthly%20public%20transport%20patronage%20by%20mode_21082024.csv",
+      "format": {"type": "csv"}
+    },
+    "mark": "line",
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "ordinal",
+        "title": "Year",
+        "axis": {"titleAngle": 0, "titleY": -10}
+      },
+      "y": {
+        "field": "Patronage",
+        "type": "quantitative",
+        "title": "Patronage"
+      },
+      "color": {
+        "field": "Mode",
+        "type": "nominal",
+        "title": "Mode",
+        "scale": {
+          "domain": ["Metropolitan train", "Metropolitan tram", "Metropolitan bus"],
+          "range": ["#1f77b4", "#ff7f0e", "#2ca02c"]
+        }
+      },
+      "tooltip": [
+        {"field": "Year", "type": "ordinal", "title": "Year"},
+        {"field": "Month name", "type": "nominal", "title": "Month"},
+        {"field": "Mode", "type": "nominal", "title": "Mode"},
+        {"field": "Patronage", "type": "quantitative", "title": "Patronage"}
+      ]
+    },
+    "transform": [
+      {
+        "fold": ["Metropolitan train", "Metropolitan tram", "Metropolitan bus"],
+        "as": ["Mode", "Patronage"]
+      },
+      {
+        "filter": {"selection": "month"}
+      }
+    ],
+    "selection": {
+      "month": {
+        "type": "single",
+        "fields": ["Month name"],
+        "bind": {
+          "input": "select",
+          "options": [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+          ],
+          "name": "Select Month: "
+        },
+        "init": {"Month name": "January"}
+      }
+    }
+  }
+  
