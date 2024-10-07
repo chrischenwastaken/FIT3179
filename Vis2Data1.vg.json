@@ -1,0 +1,41 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "New Vehicle Registration August 2024",
+    "title": "New Vehicle Registration August 2024",
+    "width": 800,  
+    "height": 500, 
+    "data": {
+      "url": "https://raw.githubusercontent.com/chrischenwastaken/FIT3179/refs/heads/main/Monthly_New_Vehicle_Registration_August2024.csv"
+    },
+    "transform": [
+      {
+        "filter": "datum.TOTAL > 50"
+      }
+    ],
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "CD_MAKE_VEH",
+        "type": "nominal",
+        "title": "Vehicle Make"
+      },
+      "y": {
+        "field": "TOTAL",
+        "type": "quantitative",
+        "title": "Total Registrations"
+      },
+      "color": {
+        "field": "NB_YEAR_MFC_VEH",
+        "type": "nominal",
+        "title": "Build Year"
+      },
+      "tooltip": [
+        {"field": "CD_MAKE_VEH", "type": "nominal", "title": "Make"},
+        {"field": "CD_MODEL_VEH", "type": "nominal", "title": "Model"},
+        {"field": "CD_CLR_BDY_VEH_P", "type": "nominal", "title": "Color"},
+        {"field": "NB_YEAR_MFC_VEH", "type": "nominal", "title": "Build Year"},
+        {"field": "TOTAL", "type": "quantitative", "title": "Total"}
+      ]
+    }
+  }
+  
