@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>   
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +8,45 @@
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 <script src="vega_lite_vis.js"></script>
-<title>Data Visualisation 2</title>
+<title>Traffic in Melbourne</title>
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"> 
 </head>
 <body>
-<h1>Data Visualisation 2</h1>
-<div class="chart-container" id="bar_chart"></div>
-<div class="chart-container" id="line_chart"></div>
-<div class="chart-container" id="bar_bar_chart"></div>
+<h1>Traffic in Melbourne</h1>
+<div class="main-container">
+    <div class="chart-container" id="map"></div> <!-- Map container -->
+    <div class="text-container" id="map-text">Melbourne’s traffic woes are a daily challenge for commuters, leading to longer travel times, increased fuel consumption, and higher levels of pollution. The congestion is particularly pronounced on the main arterial roads and highways leading into and out of the city center, where the volume of vehicles is at its peak.</div>
+</div>
+<div class="main-container">
+    <div class="chart-container" id="line_dot_chart"></div> <!-- Line dot chart container -->
+    <div class="text-container" id="line_dot_chart_text">This graph shows the usage trends for buses, metropolitan trains, and trams in Melbourne from 2016 to 2023. Each mode is represented by a different colored line: green for buses, blue for trains, and orange for trams.
+
+        The graph reveals fluctuations in public transport usage over the years, with a noticeable dip around 2020, likely due to the impact of the COVID-19 pandemic. Post-2020, there is a gradual recovery in patronage, with trains and trams showing significant increases, indicating a return to normalcy and possibly an increased reliance on public transport.</div>
+</div>
+<div class="main-container">
+    <div class="chart-row">
+        <div class="chart-container" id="small_bar_chart1"></div> <!-- Small bar chart 1 container -->
+        <div class="chart-container" id="small_bar_chart2"></div> <!-- Small bar chart 2 container -->
+    </div>
+    <div class="text-container" id="small_bar_charts_text">The first graph shows that Ford had the highest number of new vehicle registrations, surpassing 2,000 vehicles. Other popular makes include Hyundai, Kia, and Toyota, each with significant numbers of new registrations.
+
+        The second graph illustrates the number of vehicle transfers by make and build year. Ford also leads in this category, with a high number of transfers across various build years. These graphs show a mix of older and newer vehicles entering the traffic system, indicating a dynamic market where both new and used cars are actively being bought and sold.</div>
+</div>
+<div class="main-container">
+    <div class="chart-container" id="heat_map"></div> <!-- Heat map container -->
+    <div class="text-container" id="heat_map_text">This heatmap visualizes the daily passenger data at a train station, categorized by different days of the week and time slots. The vertical axis distinguishes between Normal Weekdays, Special Holiday Weekdays, Saturdays, and Sundays, while the horizontal axis breaks down the day into Early Morning, Morning Peak, Midday, Afternoon Peak, and Night. The color intensity indicates the number of passengers, with darker shades representing lower numbers.
+
+        Overall, the heatmap shows that passenger numbers are relatively low during most times of the day, as indicated by the darker shades. The only exceptions are the Morning and Afternoon Peak times on Normal Weekdays, where lighter shades suggest higher passenger traffic. This pattern highlights that the station experiences low passenger volumes for the majority of the day, with significant increases only during peak commuting hours on weekdays. This insight can be useful for optimizing train schedules and managing station resources efficiently.</div>
+</div>
+<div class="subtext-container" id="subtext">
+    Author: Christopher Chen <br>
+    Date: 14/10/2024 (received an extension) <br>
+    Sources: <br>
+    https://discover.data.vic.gov.au/dataset/traffic-volume <br>
+    https://discover.data.vic.gov.au/dataset/monthly-new-vehicle-transfers<br>
+    https://discover.data.vic.gov.au/dataset/annual-metropolitan-train-station-patronage-station-entries<br>
+    https://discover.data.vic.gov.au/dataset/train-service-passenger-counts
+</div>
 </body>
 </html>

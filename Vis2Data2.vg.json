@@ -1,30 +1,33 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "New Vehicle Registration August 2024",
-  "title": "New Vehicle Registration August 2024",
+  "description": "Vehicle Transfers August 2024",
+  "title": "Vehicle Transfers August 2024",
   "width": 400,  
   "height": 200, 
   "data": {
-    "url": "https://raw.githubusercontent.com/chrischenwastaken/FIT3179/refs/heads/main/Monthly_New_Vehicle_Registration_August2024.csv",
+    "url": "https://raw.githubusercontent.com/chrischenwastaken/FIT3179/refs/heads/main/Monthly_Vehicle_Transfers_August2024.csv",
     "format": {"type": "csv"}
   },
   "transform": [
     {
-      "filter": "datum.TOTAL > 50"
+      "filter": "datum.TOTAL1 > 50"
+    },
+    {
+      "filter": "datum.NB_YEAR_MFC_VEH != 2024"
     }
   ],
   "mark": "bar",
   "encoding": {
     "x": {
-      "field": "CD_MAKE_VEH",
+      "field": "CD_MAKE_VEH1",
       "type": "nominal",
       "title": "Vehicle Make",
       "axis": {"grid": false, "labelAngle": 0}
     },
     "y": {
-      "field": "TOTAL",
+      "field": "TOTAL1",
       "type": "quantitative",
-      "title": "Total Registrations",
+      "title": "Total Transfers",
       "axis": {"grid": false}
     },
     "color": {
@@ -33,10 +36,10 @@
       "title": "Build Year"
     },
     "tooltip": [
-      {"field": "CD_MAKE_VEH", "type": "nominal", "title": "Make"},
+      {"field": "CD_MAKE_VEH1", "type": "nominal", "title": "Make"},
       {"field": "CD_MODEL_VEH", "type": "nominal", "title": "Model"},
       {"field": "NB_YEAR_MFC_VEH", "type": "nominal", "title": "Build Year"},
-      {"field": "TOTAL", "type": "quantitative", "title": "Total"}
+      {"field": "TOTAL1", "type": "quantitative", "title": "Total"}
     ]
   }
 }

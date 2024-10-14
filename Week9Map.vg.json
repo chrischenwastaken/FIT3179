@@ -1,61 +1,327 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "layer": [
-      
-      {
-        "data": {
-          "url": "https://raw.githubusercontent.com/chrischenwastaken/FIT3179/refs/heads/main/suburb-2-vic.geojson",
-          "format": {
-            "type": "json",
-            "property": "features"
-          }
-        },
-        "mark": {
-          "type": "geoshape",
-          "fill": "lightgrey"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/chrischenwastaken/FIT3179/refs/heads/main/suburb-2-vic.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
         }
       },
-      {
-        "data": {
-          "url": "https://raw.githubusercontent.com/chrischenwastaken/FIT3179/refs/heads/main/Traffic_Volume1.geojson",
-          "format": {
-            "type": "json",
-            "property": "features"
+      "mark": {
+        "type": "geoshape",
+        "fill": "lightgrey"
+      },
+      "projection": {
+        "type": "mercator",
+        "center": [144.9631, -37.8136],
+        "scale": 50000
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/chrischenwastaken/FIT3179/main/Traffic_Volume/EASTERN_REGION.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "stroke": {
+          "field": "properties.ALLVEHS_AADT",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 26666, 53333, 80000],
+            "range": ["#ffcccc", "#ff6666", "#cc0000"]
+          },
+          "legend": {
+            "title": "Average Annual Daily Traffic"
           }
         },
-        "mark": {
-          "type": "geoshape",
-          "strokeWidth": 1
+        "color": {
+          "value": "null"
         },
-        "encoding": {
-          "stroke": {
-            "field": "properties.ALLVEHS_AADT",
-            "type": "quantitative",
-            "scale": {
-              "scheme": "reds",
-              "domain": [0, 50, 80000]  
-            },
-            "legend": {
-              "title": "Average Annual Daily Traffic"
-            }
-          },
-          "tooltip": [
-            {"field": "properties.HMGNS_LNK_DESC", "type": "nominal", "title": "Street"},
-            {"field": "properties.ALLVEHS_AADT", "type": "quantitative", "title": "Avg. Annual Daily Traffic"},
-            {"field": "properties.LGA_SHORT_NM", "type": "nominal", "title": "LGA"},
-            {"field": "properties.RGN_LONG_NM", "type": "nominal", "title": "Region"},
-            {"field": "properties.ROAD_NBR", "type": "nominal", "title": "Road Number"},
-            {"field": "properties.DECLARED_ROAD_NM", "type": "nominal", "title": "Declared Road Name"},
-            {"field": "properties.FLOW", "type": "nominal", "title": "Flow Direction"},
-            {"field": "properties.YR", "type": "nominal", "title": "Year"}
-          ]
-        },
-        "projection": {
-          "type": "mercator"
-        }
+        "tooltip": [
+          {"field": "properties.HMGNS_LNK_DESC", "type": "nominal", "title": "Street"},
+          {"field": "properties.ALLVEHS_AADT", "type": "quantitative", "title": "Avg. Annual Daily Traffic"},
+          {"field": "properties.LGA_SHORT_NM", "type": "nominal", "title": "Local Government Area"},
+          {"field": "properties.RGN_LONG_NM", "type": "nominal", "title": "Region"},
+          {"field": "properties.ROAD_NBR", "type": "nominal", "title": "Road Number"},
+          {"field": "properties.DECLARED_ROAD_NM", "type": "nominal", "title": "Declared Road Name"},
+          {"field": "properties.FLOW", "type": "nominal", "title": "Flow Direction"}
+        ]
+      },
+      "projection": {
+        "type": "mercator",
+        "center": [144.9631, -37.8136],
+        "scale": 50000
       }
-    ],
-    "width": 800,
-    "height": 600,
-    "title": "PLACEHOLDER MAP, WILL NOT BE USED FOR FINAL VIS"
-  }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/chrischenwastaken/FIT3179/main/Traffic_Volume/METROPOLITAN_NORTH_WEST_REGION.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "stroke": {
+          "field": "properties.ALLVEHS_AADT",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 26666, 53333, 80000],
+            "range": ["#ffcccc", "#ff6666", "#cc0000"]
+          },
+          "legend": {
+            "title": "Average Annual Daily Traffic"
+          }
+        },
+        "color": {
+          "value": "null"
+        },
+        "tooltip": [
+          {"field": "properties.HMGNS_LNK_DESC", "type": "nominal", "title": "Street"},
+          {"field": "properties.ALLVEHS_AADT", "type": "quantitative", "title": "Avg. Annual Daily Traffic"},
+          {"field": "properties.LGA_SHORT_NM", "type": "nominal", "title": "Local Government Area"},
+          {"field": "properties.RGN_LONG_NM", "type": "nominal", "title": "Region"},
+          {"field": "properties.ROAD_NBR", "type": "nominal", "title": "Road Number"},
+          {"field": "properties.DECLARED_ROAD_NM", "type": "nominal", "title": "Declared Road Name"},
+          {"field": "properties.FLOW", "type": "nominal", "title": "Flow Direction"}
+        ]
+      },
+      "projection": {
+        "type": "mercator",
+        "center": [144.9631, -37.8136],
+        "scale": 50000
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/chrischenwastaken/FIT3179/main/Traffic_Volume/METROPOLITAN_SOUTH_EAST_REGION.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "stroke": {
+          "field": "properties.ALLVEHS_AADT",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 26666, 53333, 80000],
+            "range": ["#ffcccc", "#ff6666", "#cc0000"]
+          },
+          "legend": {
+            "title": "Average Annual Daily Traffic"
+          }
+        },
+        "color": {
+          "value": "null"
+        },
+        "tooltip": [
+          {"field": "properties.HMGNS_LNK_DESC", "type": "nominal", "title": "Street"},
+          {"field": "properties.ALLVEHS_AADT", "type": "quantitative", "title": "Avg. Annual Daily Traffic"},
+          {"field": "properties.LGA_SHORT_NM", "type": "nominal", "title": "Local Government Area"},
+          {"field": "properties.RGN_LONG_NM", "type": "nominal", "title": "Region"},
+          {"field": "properties.ROAD_NBR", "type": "nominal", "title": "Road Number"},
+          {"field": "properties.DECLARED_ROAD_NM", "type": "nominal", "title": "Declared Road Name"},
+          {"field": "properties.FLOW", "type": "nominal", "title": "Flow Direction"}
+        ]
+      },
+      "projection": {
+        "type": "mercator",
+        "center": [144.9631, -37.8136],
+        "scale": 50000
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/chrischenwastaken/FIT3179/main/Traffic_Volume/NORTHERN_REGION.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "stroke": {
+          "field": "properties.ALLVEHS_AADT",
+          "type": "quantitative",
+          "scale": {
+          "domain": [0, 26666, 53333, 80000],
+          "range": ["#ffcccc", "#ff6666", "#cc0000"]
+        },
+          "legend": {
+            "title": "Average Annual Daily Traffic"
+          }
+        },
+        "color": {
+          "value": "null"
+        },
+        "tooltip": [
+          {"field": "properties.HMGNS_LNK_DESC", "type": "nominal", "title": "Street"},
+          {"field": "properties.ALLVEHS_AADT", "type": "quantitative", "title": "Avg. Annual Daily Traffic"},
+          {"field": "properties.LGA_SHORT_NM", "type": "nominal", "title": "Local Government Area"},
+          {"field": "properties.RGN_LONG_NM", "type": "nominal", "title": "Region"},
+          {"field": "properties.ROAD_NBR", "type": "nominal", "title": "Road Number"},
+          {"field": "properties.DECLARED_ROAD_NM", "type": "nominal", "title": "Declared Road Name"},
+          {"field": "properties.FLOW", "type": "nominal", "title": "Flow Direction"}
+        ]
+      },
+      "projection": {
+        "type": "mercator",
+        "center": [144.9631, -37.8136],
+        "scale": 50000
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/chrischenwastaken/FIT3179/main/Traffic_Volume/NORTH_EASTERN_REGION.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "stroke": {
+          "field": "properties.ALLVEHS_AADT",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 26666, 53333, 80000],
+            "range": ["#ffcccc", "#ff6666", "#cc0000"]
+          },
+          "legend": {
+            "title": "Average Annual Daily Traffic"
+          }
+        },
+        "color": {
+          "value": "null"
+        },
+        "tooltip": [
+          {"field": "properties.HMGNS_LNK_DESC", "type": "nominal", "title": "Street"},
+          {"field": "properties.ALLVEHS_AADT", "type": "quantitative", "title": "Avg. Annual Daily Traffic"},
+          {"field": "properties.LGA_SHORT_NM", "type": "nominal", "title": "Local Government Area"},
+          {"field": "properties.RGN_LONG_NM", "type": "nominal", "title": "Region"},
+          {"field": "properties.ROAD_NBR", "type": "nominal", "title": "Road Number"},
+          {"field": "properties.DECLARED_ROAD_NM", "type": "nominal", "title": "Declared Road Name"},
+          {"field": "properties.FLOW", "type": "nominal", "title": "Flow Direction"}
+        ]
+      },
+      "projection": {
+        "type": "mercator",
+        "center": [144.9631, -37.8136],
+        "scale": 50000
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/chrischenwastaken/FIT3179/main/Traffic_Volume/SOUTH_WESTERN_REGION.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "stroke": {
+          "field": "properties.ALLVEHS_AADT",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 26666, 53333, 80000],
+            "range": ["#ffcccc", "#ff6666", "#cc0000"]
+          },
+          "legend": {
+            "title": "Average Annual Daily Traffic"
+          }
+        },
+        "color": {
+          "value": "null"
+        },
+        "tooltip": [
+          {"field": "properties.HMGNS_LNK_DESC", "type": "nominal", "title": "Street"},
+          {"field": "properties.ALLVEHS_AADT", "type": "quantitative", "title": "Avg. Annual Daily Traffic"},
+          {"field": "properties.LGA_SHORT_NM", "type": "nominal", "title": "Local Government Area"},
+          {"field": "properties.RGN_LONG_NM", "type": "nominal", "title": "Region"},
+          {"field": "properties.ROAD_NBR", "type": "nominal", "title": "Road Number"},
+          {"field": "properties.DECLARED_ROAD_NM", "type": "nominal", "title": "Declared Road Name"},
+          {"field": "properties.FLOW", "type": "nominal", "title": "Flow Direction"}
+        ]
+      },
+      "projection": {
+        "type": "mercator",
+        "center": [144.9631, -37.8136],
+        "scale": 50000
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/chrischenwastaken/FIT3179/main/Traffic_Volume/WESTERN_REGION.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "stroke": {
+          "field": "properties.ALLVEHS_AADT",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 26666, 53333, 80000],
+            "range": ["#ffcccc", "#ff6666", "#cc0000"]
+          },
+          "legend": {
+            "title": "Average Annual Daily Traffic"
+          }
+        },
+        "color": {
+          "value": "null"
+        },
+        "tooltip": [
+          {"field": "properties.HMGNS_LNK_DESC", "type": "nominal", "title": "Street"},
+          {"field": "properties.ALLVEHS_AADT", "type": "quantitative", "title": "Avg. Annual Daily Traffic"},
+          {"field": "properties.LGA_SHORT_NM", "type": "nominal", "title": "Local Government Area"},
+          {"field": "properties.RGN_LONG_NM", "type": "nominal", "title": "Region"},
+          {"field": "properties.ROAD_NBR", "type": "nominal", "title": "Road Number"},
+          {"field": "properties.DECLARED_ROAD_NM", "type": "nominal", "title": "Declared Road Name"},
+          {"field": "properties.FLOW", "type": "nominal", "title": "Flow Direction"}
+        ]
+      },
+      "projection": {
+        "type": "mercator",
+        "center": [144.9631, -37.8136],
+        "scale": 50000
+      }
+    }
+  ],
+  "width": 1000,
+  "height": 800,
+  "title": "Traffic Volume Map of Melbourne"
+}

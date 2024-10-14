@@ -1,0 +1,87 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A heatmap showing train station daily passenger data.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/chrischenwastaken/FIT3179/refs/heads/main/Annual_Metropolitan_Train_Station_Entries_2023-24.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "Pax_norm_weekday",
+        "Pax_sch_hol_weekday",
+        "Pax_Saturday",
+        "Pax_Sunday",
+        "Pax_pre_AM_peak",
+        "Pax_AM_peak",
+        "Pax_interpeak",
+        "Pax_PM_peak",
+        "Pax_PM_late"
+      ],
+      "as": ["Passenger_Type", "Passengers"]
+    },
+    {
+      "lookup": "Passenger_Type",
+      "from": {
+        "data": {
+          "values": [
+            {"Passenger_Type": "Pax_norm_weekday", "Readable_Type": "Normal Weekday"},
+            {"Passenger_Type": "Pax_sch_hol_weekday", "Readable_Type": "School Holiday Weekday"},
+            {"Passenger_Type": "Pax_Saturday", "Readable_Type": "Saturday"},
+            {"Passenger_Type": "Pax_Sunday", "Readable_Type": "Sunday"},
+            {"Passenger_Type": "Pax_pre_AM_peak", "Readable_Type": "Early Morning"},
+            {"Passenger_Type": "Pax_AM_peak", "Readable_Type": "Morning Peak"},
+            {"Passenger_Type": "Pax_interpeak", "Readable_Type": "Midday"},
+            {"Passenger_Type": "Pax_PM_peak", "Readable_Type": "Afternoon Peak"},
+            {"Passenger_Type": "Pax_PM_late", "Readable_Type": "Night"}
+          ]
+        },
+        "key": "Passenger_Type",
+        "fields": ["Readable_Type"]
+      }
+    }
+  ],
+  "mark": "rect",
+  "encoding": {
+    "y": {
+      "field": "Stop_ID",
+      "type": "ordinal",
+      "title": "Train Station",
+      "axis": {"labels": false}
+    },
+    "x": {
+      "field": "Readable_Type",
+      "type": "nominal",
+      "title": "Type of Day",
+      "axis": {"labelAngle": 0},
+      "sort": [
+        "Normal Weekday",
+        "School Holiday Weekday",
+        "Saturday",
+        "Sunday",
+        "Early Morning",
+        "Morning Peak",
+        "Midday",
+        "Afternoon Peak",
+        "Night"
+      ]
+    },
+    "color": {
+      "field": "Passengers",
+      "type": "quantitative",
+      "scale": {"type": "log", "scheme": "viridis"},
+      "title": "Number of Passengers"
+    },
+    "tooltip": [
+      {"field": "Stop_name", "type": "nominal", "title": "Station Name"},
+      {"field": "Readable_Type", "type": "nominal", "title": "Type of Day"},
+      {"field": "Passengers", "type": "quantitative", "title": "Number of Passengers"}
+    ]
+  },
+  "title": {
+    "text": "Train Station Daily Passenger Data Heatmap",
+    "fontSize": 20,
+    "anchor": "start"
+  },
+  "width": 1000,
+  "height": 600
+}
